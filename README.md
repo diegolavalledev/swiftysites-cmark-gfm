@@ -30,7 +30,10 @@ Download the XCFramework to your project's root and add it to your _Package.swif
 let package = Package(
     …
     targets: [
-        .binaryTarget(name: "CMarkGFM", path: "CMarkGFM.xcframework"),
+        .binaryTarget(
+            name: "CMarkGFM",
+            url: "https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0-beta.1/CMarkGFM.xcframework.zip",
+            checksum: "d783dcb8c0870584fffda9d5f54859e327d8dfe80793eb195711e6617fa87a8e"),
         .target(
             name: "YourProject",
             dependencies: ["CMarkGFM"])

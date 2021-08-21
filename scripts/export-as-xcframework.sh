@@ -40,6 +40,9 @@ rm -rf $CLIENT_XCODE_PROJECT/CMarkGFM.xcframework
 
 xcodebuild -create-xcframework -framework CMarkGFM.xcarchive/Products/Library/Frameworks/CMarkGFM.framework -output $CLIENT_XCODE_PROJECT/CMarkGFM.xcframework
 
+zip CMarkGFM.xcframework
+swift package compute-checksum CMarkGFM.xcframework.zip
+
 # Multiple frameworks can be combined for multiple arthitectures.
 
 # Clean up
