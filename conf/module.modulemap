@@ -1,0 +1,11 @@
+framework module CMarkGFM {
+    umbrella header "CMarkGFM.h"
+    header "cmark_gfm_markdown_to_html.h"
+    header "cmark-gfm.h"
+    export *
+
+    explicit module CMarkGFM_Private {
+        header "cmark-gfm_export.h"
+        header "cmark-gfm_version.h"
+    }
+}

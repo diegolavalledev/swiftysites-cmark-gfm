@@ -1,0 +1,6 @@
+.DS_Store
+/.gitconfig/user
+xcuserdata/
+/CMarkGFM.xcarchive
+/lib/libcmark-gfm-extensions.a
+/lib/libcmark-gfm.a
