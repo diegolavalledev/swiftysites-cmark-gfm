@@ -4,10 +4,10 @@
 
 ## Public interface
 
-This library extends _String_ with a single public property.
+This library extends _String_ with a single public function.
 
 ```swift
-String.markdownToHTML: String
+String.markdownToHTML() -> String
 ```
 
 ## Usage
@@ -15,9 +15,13 @@ String.markdownToHTML: String
 ```swift
 import CMarkGFM
 
-let HTML = "# Hello".markdownToHTML
+let HTML = "# Hello".markdownToHTML()
 print(HTML) // "<h1>Hello</h1>"
 ```
+
+## Documentation
+
+Find full documentation ins DocC format attached to each release.
 
 ## Configuring
 
@@ -33,7 +37,7 @@ let package = Package(
         .binaryTarget(
             name: "CMarkGFM",
             url: "https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0-beta.1/CMarkGFM.xcframework.zip",
-            checksum: "d783dcb8c0870584fffda9d5f54859e327d8dfe80793eb195711e6617fa87a8e"),
+            checksum: "c7656b0b0c2bed7f12fe9d60044617c0d20310d8c306a8b1e22a8159c750f1de"),
         .target(
             name: "YourProject",
             dependencies: ["CMarkGFM"])

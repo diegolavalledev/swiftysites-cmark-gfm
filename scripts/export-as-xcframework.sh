@@ -29,24 +29,27 @@ cd $XCODE_PROJECT
 
 # Archive
 
-xcodebuild archive -project CMarkGFM.xcodeproj -scheme CMarkGFM -destination "platform=macOS,arch=x86_64" -configuration Release -archivePath ./CMarkGFM
+xcodebuild archive -project CMarkGFM.xcodeproj -scheme CMarkGFM -destination "platform=macOS" -configuration Release -archivePath ./CMarkGFM
 
 # Currently only the x86_64 (Intel) architecture is supported
 
-# Clean up previous framework from the client project
-rm -rf $CLIENT_XCODE_PROJECT/CMarkGFM.xcframework
-
 # Create XCFramework
 
-xcodebuild -create-xcframework -framework CMarkGFM.xcarchive/Products/Library/Frameworks/CMarkGFM.framework -output $CLIENT_XCODE_PROJECT/CMarkGFM.xcframework
+xcodebuild -create-xcframework -framework CMarkGFM.xcarchive/Products/Library/Frameworks/CMarkGFM.framework -output CMarkGFM.xcframework
 
-zip CMarkGFM.xcframework
+zip -Xr CMarkGFM.xcframework CMarkGFM.xcframework.zip
 swift package compute-checksum CMarkGFM.xcframework.zip
 
 # Multiple frameworks can be combined for multiple arthitectures.
 
+# Optional copy locally to a client project
+# Clean up previous framework from the client project
+rm -rf $CLIENT_XCODE_PROJECT/CMarkGFM.xcframework
+cp -Rp CMarkGFM.xcframework $CLIENT_XCODE_PROJECT
+
+
 # Clean up
-rm -rf CMarkGFM.xcarchive
+rm -rf CMarkGFM.xcarchive CMarkGFM.xcframework  CMarkGFM.xcframework.zip
 
 # To only bundle the cmark-gfm static libraries in an Xcode Framework use the following command form:
 #

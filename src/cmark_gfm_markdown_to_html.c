@@ -11,7 +11,7 @@ void addMarkdownExtension(cmark_parser *parser, char *extName) {
     }
 }
 
-// A function to convert HTML to markdown
+/// A function to convert HTML to Github Flavored Markdown (GFM)
 char *cmark_gfm_markdown_to_html(const char *text, size_t len, int options, char** extensions, int extensionsCount) {
     cmark_gfm_core_extensions_ensure_registered();
 

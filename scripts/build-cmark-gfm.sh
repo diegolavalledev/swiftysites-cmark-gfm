@@ -3,17 +3,21 @@
 # You will need cmake and autotools (Make)
 brew install cmake autotools
 
-export $YOUR_XCODE_PROJECT_DIR=/some/path/to/your/project
+export $XCODE_PROJECT_DIR=/some/path/to/your/project
 
 git clone https://github.com/github/cmark-gfm
 cd cmark-gfm
 mkdir build
 cd build
-cmake -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF ..
+
+cmake -DCMAKE_OSX_ARCHITECTURES=arm64 -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF ..
 
 # Optional. Verify the right settings were applied.
 cmake -L -N ..
 # …
+# CMAKE_OSX_ARCHITECTURES:STRING=arm64
+# CMAKE_OSX_DEPLOYMENT_TARGET:STRING=11.0
+# CMAKE_OSX_SYSROOT:PATH=/Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.0.sdk
 # CMARK_SHARED:BOOL=OFF
 # CMARK_STATIC:BOOL=ON
 # CMARK_TESTS:BOOL=OFF
@@ -21,12 +25,27 @@ cmake -L -N ..
 
 # Build products (static library)
 make
+mv src/libcmark-gfm.a src/libcmark-gfm.arm64.a
+mv extensions/libcmark-gfm-extensions.a extensions/libcmark-gfm-extensions.arm64.a
+make clean
+
+# Repeat but for x86_64
+
+cmake -DCMAKE_OSX_ARCHITECTURES=x86_64 -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 -DCMARK_TESTS=OFF -DCMARK_SHARED=OFF ..
+cmake -L -N ..
+make
+
+lipo -create src/libcmark-gfm.arm64.a src/libcmark-gfm.x86_64.a -output src/libcmark-gfm.a
+lipo -create extensions/libcmark-gfm-extensions.arm64.a extensions/libcmark-gfm-extensions.x86_64.a -output extensions/libcmark-gfm-extensions.a
+
+cp src/libcmark-gfm.a $XCODE_PROJECT_DIR/lib
+cp extensions/libcmark-gfm-extensions.a $XCODE_PROJECT_DIR/lib
 
 # Copy headers, generated headers and static library to your Xcode project
-cp ../src/cmark-gfm.h src/cmark-gfm_export.h src/cmark-gfm_version.h src/libcmark-gfm.a $YOUR_XCODE_PROJECT_DIR
+cp ../src/cmark-gfm.h src/cmark-gfm_export.h src/cmark-gfm_version.h src/libcmark-gfm.a $XCODE_PROJECT_DIR
 
 # Optional GFM extensions (table, strikethrough)
-cp ../src/cmark-gfm-extension_api.h ../extensions/cmark-gfm-core-extensions.h config.h extensions/cmark-gfm-extensions_export.h extensions/libcmark-gfm-extensions.a $YOUR_XCODE_PROJECT_DIR
+cp ../src/cmark-gfm-extension_api.h ../extensions/cmark-gfm-core-extensions.h config.h extensions/cmark-gfm-extensions_export.h extensions/libcmark-gfm-extensions.a $XCODE_PROJECT_DIR
 
 # Optional. Clean up products.
 make clean
@@ -39,7 +58,7 @@ rm -rf build
 cd ..
 rm -rf
 
-cd $YOUR_XCODE_PROJECT_DIR
+cd $XCODE_PROJECT_DIR
 
 # Add headers to project (not part of target)
 # Add library to project as required
