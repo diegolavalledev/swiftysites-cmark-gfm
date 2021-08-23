@@ -37,7 +37,7 @@ let package = Package(
         .binaryTarget(
             name: "CMarkGFM",
             url: "https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0-beta.1/CMarkGFM.xcframework.zip",
-            checksum: "c7656b0b0c2bed7f12fe9d60044617c0d20310d8c306a8b1e22a8159c750f1de"),
+            checksum: "c17107899fa86946af719a42aae617569c85f2c0016daa1f344892a6b70df994"),
         .target(
             name: "YourProject",
             dependencies: ["CMarkGFM"])

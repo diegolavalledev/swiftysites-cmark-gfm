@@ -37,8 +37,18 @@ xcodebuild archive -project CMarkGFM.xcodeproj -scheme CMarkGFM -destination "pl
 
 xcodebuild -create-xcframework -framework CMarkGFM.xcarchive/Products/Library/Frameworks/CMarkGFM.framework -output CMarkGFM.xcframework
 
-zip -Xr CMarkGFM.xcframework CMarkGFM.xcframework.zip
+zip -Xr CMarkGFM.xcframework.zip CMarkGFM.xcframework
+
+cat >> Package.swift << EOF
+import PackageDescription
+let package = Package(name: "Dummy")
+EOF
+
 swift package compute-checksum CMarkGFM.xcframework.zip
+# Result goes in README.md
+
+rm Package.swift
+
 
 # Multiple frameworks can be combined for multiple arthitectures.
 
