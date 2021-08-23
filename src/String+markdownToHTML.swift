@@ -3,15 +3,24 @@ public extension String {
 
     /// Converts a GFM (Github-Flavored Markdown) string into its corresponding rendered HTML code.
     ///
-    /// Example of usage:
+    /// Basic usage:
     ///
-    /// `let HTML = "# Hello".markdownToHTML`
+    /// `let HTML = "# Hello".markdownToHTML()`
     /// `print(HTML) // "<h1>Hello</h1>"`
     ///
-    /// Footnotes, table and strike-through extensions are enabled by default.
+    /// For a list of default CMark options see `[CMarkOption].default`.
+    /// For a list of default GFM extensions see `[GFMExtension].default`.
     ///
-    var markdownToHTML: String {
-        let outString = cmark_gfm_markdown_to_html(self, utf8.count, CMARK_OPT_DEFAULT|CMARK_OPT_UNSAFE|CMARK_OPT_FOOTNOTES)!
+    func markdownToHTML(options: [CMarkOption] = .default, extensions: [GFMExtension] = .default) -> String {
+
+        // Create [UnsafeMutablePointer<Int8>]:
+        var extensions = extensions.map { strdup($0.rawValue) }
+
+        let outString = cmark_gfm_markdown_to_html(self, utf8.count, options.code, &extensions, Int32(extensions.count))!
+
+        // Free the duplicated strings:
+        for ptr in extensions { free(ptr) }
+
         defer { free(outString) }
         return String(cString: outString)
     }

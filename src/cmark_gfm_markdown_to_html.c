@@ -12,15 +12,16 @@ void addMarkdownExtension(cmark_parser *parser, char *extName) {
 }
 
 // A function to convert HTML to markdown
-char *cmark_gfm_markdown_to_html(const char *text, size_t len, int options) {
+char *cmark_gfm_markdown_to_html(const char *text, size_t len, int options, char** extensions, int extensionsCount) {
     cmark_gfm_core_extensions_ensure_registered();
 
     // Modified version of cmark_parse_document in blocks.c
     cmark_parser *parser = cmark_parser_new(options);
 
     // Add extensions here
-    addMarkdownExtension(parser, "strikethrough");
-    addMarkdownExtension(parser, "table");
+    for (int i = 0; i < extensionsCount; i++) {
+        addMarkdownExtension(parser, extensions[i]);
+    }
 
     cmark_node *doc;
     cmark_parser_feed(parser, text, len);
