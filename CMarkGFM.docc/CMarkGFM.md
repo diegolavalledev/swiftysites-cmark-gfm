@@ -1,27 +1,43 @@
 # ``CMarkGFM``
 
-Easily convert Swift strings to Github Flavored Mardown (CMark-GFM).
+Easily render HTML from standard Markdown content.
 
 ## Overview
 
-Use the _String_ method `markdownToHTML()` to apply the conversion.
+Use this library to generate HTML from a string containing [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/) / [CommonMark](https://commonmark.org) content.
 
-```swift
-public extension String {
-    func markdownToHTML(options: [CMarkOption] = .default, extensions: [GFMExtension] = .default) -> String {
-        …
-    }
-}
+For example this code:
+
+```markdown
+# Hello
+Hello, _World_!
 ```
 
-### Basic usage
+Will be translated into this code:
+
+```html
+<h1>Hello</h1>
+<p>Hello, <em>World<em>!</p>
+```
+
+## Acknowledgements
+
+This implementation is built entirely on top of the amazing [cmark-gfm](https://github.com/github/cmark-gfm) which itself is a fork of the excellent [cmark](https://github.com/commonmark/cmark).
+
+## Basic usage
+
+Simply wrap your Markdown string with ``GFMarkdown`` and call ``GFMarkdown/toHTML(options:extensions:)`` with no parameters.
 
 ```swift
-let HTML = "# Hello".markdownToHTML()
-print(HTML) // "<h1>Hello</h1>"
+let html = GFMarkdown("# Hello").toHTML()
+print(html) // "<h1>Hello</h1>"
 ```
 
 ## Topics
+
+### Converting Markdown to HTML
+
+- ``GFMarkdown/toHTML(options:extensions:)``
 
 ### Specifying options and extensions
 

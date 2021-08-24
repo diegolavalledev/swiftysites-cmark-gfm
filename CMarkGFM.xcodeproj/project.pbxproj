@@ -9,18 +9,19 @@
 /* Begin PBXBuildFile section */
 		9D4BBC8726D3980E0073249C /* GFMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BBC8626D3980E0073249C /* GFMExtension.swift */; };
 		9D4BBC8926D3987D0073249C /* CMarkOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BBC8826D3987D0073249C /* CMarkOption.swift */; };
-		9D4BBC9126D3AB890073249C /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BBC9026D3AB890073249C /* tests.swift */; };
 		9D4BBC9226D3AB890073249C /* CMarkGFM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D528B1626CD2A8100AEAEE0 /* CMarkGFM.framework */; };
 		9D4BBC9826D3DF190073249C /* libcmark-gfm.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D528B2726CD359B00AEAEE0 /* libcmark-gfm.a */; };
 		9D4BBC9926D3DF1C0073249C /* libcmark-gfm-extensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D528B2E26CD35CD00AEAEE0 /* libcmark-gfm-extensions.a */; };
 		9D4BBC9B26D3E8EE0073249C /* CMarkGFM.docc in Sources */ = {isa = PBXBuildFile; fileRef = 9D4BBC9A26D3E8EE0073249C /* CMarkGFM.docc */; };
-		9D528B2126CD2AED00AEAEE0 /* String+markdownToHTML.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D528B2026CD2AED00AEAEE0 /* String+markdownToHTML.swift */; };
-		9D528B2426CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2226CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9D528B2126CD2AED00AEAEE0 /* GFMarkdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D528B2026CD2AED00AEAEE0 /* GFMarkdown.swift */; };
+		9D528B2426CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2226CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		9D528B2526CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c in Sources */ = {isa = PBXBuildFile; fileRef = 9D528B2326CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c */; };
 		9D528B4826CD4A5200AEAEE0 /* CMarkGFM.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B1926CD2A8100AEAEE0 /* CMarkGFM.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D528B5526CDAF0E00AEAEE0 /* cmark-gfm.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B3126CD35F600AEAEE0 /* cmark-gfm.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		9D528B5626CDAF7E00AEAEE0 /* cmark-gfm_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2926CD359B00AEAEE0 /* cmark-gfm_version.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		9D528B5726CDAF7E00AEAEE0 /* cmark-gfm_export.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2826CD359B00AEAEE0 /* cmark-gfm_export.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9D7BDD1026D5367A0059605F /* CMarkGFM_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D7BDD0F26D536620059605F /* CMarkGFM_Private.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9D7BDD1126D537D50059605F /* cmark-gfm_version.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2926CD359B00AEAEE0 /* cmark-gfm_version.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9D7BDD1226D537D50059605F /* cmark-gfm_export.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D528B2826CD359B00AEAEE0 /* cmark-gfm_export.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		9D7BDD1826D554750059605F /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BDD1726D554750059605F /* tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +38,10 @@
 		9D4BBC8626D3980E0073249C /* GFMExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GFMExtension.swift; path = headers/GFMExtension.swift; sourceTree = "<group>"; };
 		9D4BBC8826D3987D0073249C /* CMarkOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMarkOption.swift; sourceTree = "<group>"; };
 		9D4BBC8E26D3AB890073249C /* tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D4BBC9026D3AB890073249C /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		9D4BBC9A26D3E8EE0073249C /* CMarkGFM.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = CMarkGFM.docc; sourceTree = "<group>"; };
 		9D528B1626CD2A8100AEAEE0 /* CMarkGFM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CMarkGFM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D528B1926CD2A8100AEAEE0 /* CMarkGFM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMarkGFM.h; sourceTree = "<group>"; };
-		9D528B2026CD2AED00AEAEE0 /* String+markdownToHTML.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+markdownToHTML.swift"; sourceTree = "<group>"; };
+		9D528B2026CD2AED00AEAEE0 /* GFMarkdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFMarkdown.swift; sourceTree = "<group>"; };
 		9D528B2226CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cmark_gfm_markdown_to_html.h; sourceTree = "<group>"; };
 		9D528B2326CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = cmark_gfm_markdown_to_html.c; sourceTree = "<group>"; };
 		9D528B2726CD359B00AEAEE0 /* libcmark-gfm.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libcmark-gfm.a"; sourceTree = "<group>"; };
@@ -51,13 +51,16 @@
 		9D528B3126CD35F600AEAEE0 /* cmark-gfm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cmark-gfm.h"; sourceTree = "<group>"; };
 		9D528B3E26CD426400AEAEE0 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
 		9D528B5026CD6D1E00AEAEE0 /* CMarkGFM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CMarkGFM.xcconfig; sourceTree = "<group>"; };
+		9D7BDD0F26D536620059605F /* CMarkGFM_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CMarkGFM_Private.h; sourceTree = "<group>"; };
+		9D7BDD1726D554750059605F /* tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
+		9D7BDD1926D55A560059605F /* export-docs.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "export-docs.sh"; sourceTree = "<group>"; };
 		9DE05E1826D0034E00085DCB /* cmark-gfm-extensions_export.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cmark-gfm-extensions_export.h"; sourceTree = "<group>"; };
 		9DE05E1926D0034E00085DCB /* cmark-gfm-extension_api.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cmark-gfm-extension_api.h"; sourceTree = "<group>"; };
 		9DE05E1A26D0034E00085DCB /* cmark-gfm-core-extensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cmark-gfm-core-extensions.h"; sourceTree = "<group>"; };
 		9DE05E1B26D0034E00085DCB /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		9DE05E2026D005C400085DCB /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		9DE05E2426D00FC900085DCB /* build-cmark-gfm.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "build-cmark-gfm.sh"; sourceTree = "<group>"; };
-		9DE05E2526D0107E00085DCB /* export-as-xcframework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "export-as-xcframework.sh"; sourceTree = "<group>"; };
+		9DE05E2526D0107E00085DCB /* generate-xcframework.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "generate-xcframework.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +87,7 @@
 		9D4BBC8F26D3AB890073249C /* tests */ = {
 			isa = PBXGroup;
 			children = (
-				9D4BBC9026D3AB890073249C /* tests.swift */,
+				9D7BDD1726D554750059605F /* tests.swift */,
 			);
 			path = tests;
 			sourceTree = "<group>";
@@ -117,12 +120,13 @@
 		9D528B1826CD2A8100AEAEE0 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				9D528B2326CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c */,
-				9D528B2226CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h */,
-				9D528B1926CD2A8100AEAEE0 /* CMarkGFM.h */,
+				9D528B2026CD2AED00AEAEE0 /* GFMarkdown.swift */,
 				9D4BBC8826D3987D0073249C /* CMarkOption.swift */,
 				9D4BBC8626D3980E0073249C /* GFMExtension.swift */,
-				9D528B2026CD2AED00AEAEE0 /* String+markdownToHTML.swift */,
+				9D528B2226CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h */,
+				9D528B2326CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c */,
+				9D528B1926CD2A8100AEAEE0 /* CMarkGFM.h */,
+				9D7BDD0F26D536620059605F /* CMarkGFM_Private.h */,
 				9DE05E1F26D004B500085DCB /* headers */,
 			);
 			path = src;
@@ -202,7 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				9DE05E2426D00FC900085DCB /* build-cmark-gfm.sh */,
-				9DE05E2526D0107E00085DCB /* export-as-xcframework.sh */,
+				9DE05E2526D0107E00085DCB /* generate-xcframework.sh */,
+				9D7BDD1926D55A560059605F /* export-docs.sh */,
 			);
 			path = scripts;
 			sourceTree = "<group>";
@@ -214,11 +219,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D7BDD1226D537D50059605F /* cmark-gfm_export.h in Headers */,
 				9D528B5526CDAF0E00AEAEE0 /* cmark-gfm.h in Headers */,
 				9D528B4826CD4A5200AEAEE0 /* CMarkGFM.h in Headers */,
+				9D7BDD1026D5367A0059605F /* CMarkGFM_Private.h in Headers */,
 				9D528B2426CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.h in Headers */,
-				9D528B5626CDAF7E00AEAEE0 /* cmark-gfm_version.h in Headers */,
-				9D528B5726CDAF7E00AEAEE0 /* cmark-gfm_export.h in Headers */,
+				9D7BDD1126D537D50059605F /* cmark-gfm_version.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4BBC9126D3AB890073249C /* tests.swift in Sources */,
+				9D7BDD1826D554750059605F /* tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +338,7 @@
 				9D528B2526CD355E00AEAEE0 /* cmark_gfm_markdown_to_html.c in Sources */,
 				9D4BBC8926D3987D0073249C /* CMarkOption.swift in Sources */,
 				9D4BBC9B26D3E8EE0073249C /* CMarkGFM.docc in Sources */,
-				9D528B2126CD2AED00AEAEE0 /* String+markdownToHTML.swift in Sources */,
+				9D528B2126CD2AED00AEAEE0 /* GFMarkdown.swift in Sources */,
 				9D4BBC8726D3980E0073249C /* GFMExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +527,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9XW8U7UU4W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -558,7 +564,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 9XW8U7UU4W;
 				DYLIB_COMPATIBILITY_VERSION = 1;

@@ -1,33 +1,45 @@
-#  CMarkGFM
+# CMarkGFM
 
-**CMarkGFM** is a small Swift wrapper for the [cmark-gfm](https://github.com/github/cmark-gfm) library written in C.
+Easily render HTML from standard Markdown content.
 
-## Public interface
+## Overview
 
-This library extends _String_ with a single public function.
+Use this library to generate HTML from a string containing [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/) / [CommonMark](https://commonmark.org) content.
 
-```swift
-String.markdownToHTML() -> String
+For example this code:
+
+```markdown
+# Hello
+Hello, _World_!
 ```
 
-## Usage
- 
-```swift
-import CMarkGFM
+Will be translated into this code:
 
-let HTML = "# Hello".markdownToHTML()
-print(HTML) // "<h1>Hello</h1>"
+```html
+<h1>Hello</h1>
+<p>Hello, <em>World<em>!</p>
 ```
 
-## Documentation
+## Acknowledgements
 
-Find full documentation ins DocC format attached to each release.
+This implementation is built entirely on top of the amazing [cmark-gfm](https://github.com/github/cmark-gfm) which itself is a fork of the excellent [cmark](https://github.com/commonmark/cmark).
 
-## Configuring
+## Basic usage
 
-Look for the corresponding _XCFramework_ attached to each release.
+Simply wrap your Markdown string with ``GFMarkdown`` and call ``GFMarkdown/toHTML(options:extensions:)`` with no parameters.
 
-Download the XCFramework to your project's root and add it to your _Package.swift_ as a binary dependency:
+```swift
+let html = GFMarkdown("# Hello").toHTML()
+print(html) // "<h1>Hello</h1>"
+```
+
+## Full documentation
+
+Complete documentation ins DocC format can be found attached to each corresponding release. For instance [here](https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0/CMarkGFM.docc.zip).
+
+## Configuring your project
+
+Look for the corresponding _XCFramework_ attached to each release and add it as a binary target to your _Package.swift_. The example below contains the correct URL and checksum for the current branch/release.
 
 ```swift
 …
@@ -36,10 +48,10 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "CMarkGFM",
-            url: "https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0-beta.1/CMarkGFM.xcframework.zip",
-            checksum: "c17107899fa86946af719a42aae617569c85f2c0016daa1f344892a6b70df994"),
+            url: "https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0/CMarkGFM.xcframework.zip",
+            checksum: "a2638dfb0d52990788143e7bbe9fdc4de1eb0153a9830a208d951720d3a4b75f"),
         .target(
-            name: "YourProject",
+            name: "MyApp",
             dependencies: ["CMarkGFM"])
     ]
     …
@@ -48,18 +60,8 @@ let package = Package(
 
 # Building
 
-If you want to build CMarkGFM from scratch, you will need to first download and build `cmark-gfm` as a static library. For more information about how to do this, take a look inside the _scripts_ folder.
+If you would like to compile CMarkGFM from scratch you will first need to download and build `cmark-gfm` as a static library. For more information about how to do this take a look inside [build-cmark-gfm](scripts/build-cmark-gfm.sh).
 
-Copy the `.a` files to the _lib_ folder and archive the project:
+Copy the `.a` files to the [lib folder](lib) and archive the project following the steps in [generate-xcframework](scripts/generate-xcframework.sh).
 
-```bash
-xcodebuild archive -project CMarkGFM.xcodeproj -scheme CMarkGFM -destination "platform=macOS,arch=x86_64" -configuration Release -archivePath ./CMarkGFM
-```
-
-To create the Xcode Framework use the following command:
-
-```bash
-xcodebuild -create-xcframework -framework CMarkGFM.xcarchive/Products/Library/Frameworks/CMarkGFM.framework -output ./CMarkGFM.xcframework
-```
-
-This is the bundle that ultimatelly gets attached to the Github release.
+The bundle that is ultimatelly generated gets attached to the GitHub release.

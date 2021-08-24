@@ -4,27 +4,27 @@ import CMarkGFM
 class tests: XCTestCase {
 
     func testDefaultMarkdown() throws {
-        let result = "# Hello".markdownToHTML()
+        let result = GFMarkdown("# Hello").toHTML()
         XCTAssertEqual(result, "<h1>Hello</h1>\n")
     }
 
     func testDefaultExtension() throws {
         // Default extensions include strikethrough
-        var result = "~Hello~".markdownToHTML()
+        var result = GFMarkdown("~Hello~").toHTML()
         XCTAssertEqual(result, "<p><del>Hello</del></p>\n")
         // Exclude strikethrough from extensions
-        result = "~Hello~".markdownToHTML(extensions: [])
+        result = GFMarkdown("~Hello~").toHTML(extensions: [])
         XCTAssertEqual(result, "<p>~Hello~</p>\n")
     }
 
     func testTableExtension() throws {
-        var result = "www.google.com".markdownToHTML(extensions: [.autolink])
+        var result =  GFMarkdown("www.google.com").toHTML(extensions: [.autolink])
         XCTAssertEqual(result, "<p><a href=\"http://www.google.com\">www.google.com</a></p>\n")
-        result = """
+        result = GFMarkdown("""
         | foo | bar |
         | --- | --- |
         | baz | bim |
-        """.markdownToHTML(extensions: [.table])
+        """).toHTML(extensions: [.table])
         XCTAssertEqual(result, """
         <table>
         <thead>
@@ -45,17 +45,17 @@ class tests: XCTestCase {
     }
 
     func testAutolinkExtension() throws {
-        var result = "www.google.com".markdownToHTML(extensions: [])
+        var result = GFMarkdown("www.google.com").toHTML(extensions: [])
         XCTAssertEqual(result, "<p>www.google.com</p>\n")
-        result = "www.google.com".markdownToHTML(extensions: [.autolink])
+        result = GFMarkdown("www.google.com").toHTML(extensions: [.autolink])
         XCTAssertEqual(result, "<p><a href=\"http://www.google.com\">www.google.com</a></p>\n")
     }
 
     func testTasklistExtension() throws {
-        let result = """
+        let result = GFMarkdown("""
         - [ ] foo
         - [x] bar
-        """.markdownToHTML(extensions: [.tasklist])
+        """).toHTML(extensions: [.tasklist])
         XCTAssertEqual(result, """
         <ul>
         <li><input type="checkbox" disabled="" /> foo</li>
@@ -66,21 +66,21 @@ class tests: XCTestCase {
     }
 
     func testGithubPreLangOption() throws {
-        var result = """
+        var result = GFMarkdown("""
         ```swift
         print("Hello, World!")
         ```
-        """.markdownToHTML(options: [])
+        """).toHTML(options: [])
         XCTAssertEqual(result, """
         <pre><code class="language-swift">print(&quot;Hello, World!&quot;)
         </code></pre>
 
         """)
-        result = """
+        result = GFMarkdown("""
         ```swift
         print("Hello, World!")
         ```
-        """.markdownToHTML(options: [.githubPreLang])
+        """).toHTML(options: [.githubPreLang])
         XCTAssertEqual(result, """
         <pre lang="swift"><code>print(&quot;Hello, World!&quot;)
         </code></pre>
@@ -89,16 +89,16 @@ class tests: XCTestCase {
     }
 
     func testSmartOption() throws {
-        var result = """
+        var result = GFMarkdown("""
         "quotes"
-        """.markdownToHTML(options: [])
+        """).toHTML(options: [])
         XCTAssertEqual(result, """
         <p>&quot;quotes&quot;</p>
 
         """)
-        result = """
+        result = GFMarkdown("""
         "quotes"
-        """.markdownToHTML(options: [.smart])
+        """).toHTML(options: [.smart])
         XCTAssertEqual(result, """
         <p>“quotes”</p>
 
@@ -108,12 +108,12 @@ class tests: XCTestCase {
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         measure {
-            let _ = """
+            let _ = GFMarkdown("""
             # Hello
 
             www.google.com
 
-            """.markdownToHTML()
+            """).toHTML()
         }
     }
 }

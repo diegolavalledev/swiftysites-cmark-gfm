@@ -1,7 +1,14 @@
+import CMarkGFM_Private
+
 /// CommonMark option values.
 ///
-/// Options affecting rendering: sourcePos, hardBreaks, safe, unsafe, noBreaks.
-/// Options affecting parsing: normalize, validateUTF8, smart, githubPreLang, liberalHTMLTag, footnotes, strikethroughDoubleTilde, tablePreferStyleAttributes, fullInfoString.
+/// ## Options affecting rendering
+///
+/// ``sourcePos``, ``hardBreaks``, ``safe``, ``unsafe``, ``noBreaks``.
+///
+/// ## Options affecting parsing
+///
+/// ``normalize``, ``validateUTF8``, ``smart``, ``githubPreLang``, ``liberalHTMLTag``, ``footnotes``, ``strikethroughDoubleTilde``, ``tablePreferStyleAttributes``, ``fullInfoString``.
 ///
 public enum CMarkOption {
 
@@ -81,12 +88,9 @@ public enum CMarkOption {
     }
 }
 
-public extension Array where Element == CMarkOption {
-    static var `default`: Self {[
-        .githubPreLang, .tablePreferStyleAttributes
-    ]}
+extension Array where Element == CMarkOption {
 
-    internal var code: Int32 {
+    var code: Int32 {
         guard count > 0 else {
             return CMARK_OPT_DEFAULT
         }
