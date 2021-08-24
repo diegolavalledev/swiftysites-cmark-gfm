@@ -35,7 +35,7 @@ print(html) // "<h1>Hello</h1>"
 
 ## Full documentation
 
-Complete documentation ins DocC format can be found attached to each corresponding release. For instance [here](https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0/CMarkGFM.docc.zip).
+Complete documentation ins DocC format can be found attached to each corresponding release. For instance [here](https://github.com/swiftysites/cmark-gfm/releases/download/1.0.0/CMarkGFM.doccarchive.zip).
 
 ## Configuring your project
 
